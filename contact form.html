@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contac form</title>
+    <style>
+        header{
+            background-color: antiquewhite;
+            padding: 50px;
+            border-radius: 10px;
+    
+            
+            
+        }
+        h1{ 
+            text-align: center;
+            background-color: aquamarine;
+            padding: 20px;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select{
+            width: 100%;
+            background-color: rgb(244, 247, 248);
+            padding: 5px 20px 20px;
+            border: 10px rgb(143, 204, 235);
+            border-radius: 5px;
+        }
+        input[type="submit"]
+        {
+            background-color: rgb(78, 187, 70);
+            color: aliceblue;
+            padding: 5px;
+         height: 50px;
+         width: 100px;
+         
+         font-size: large;
+            border-radius: 5px;
+            
+        }
+        input[type='submit']:hover{
+            color: rgb(236, 18, 18);
+            
+        }
+        input[type="button"]
+        {
+            background-color: rgb(78, 187, 70);
+            padding: 5px;
+            height: 50px;
+            width: 110px;
+            font-size: large;
+            border-radius: 5px;
+            color: white;
+        }
+        input[type="button"]:hover
+        {
+            color: red;
+        }
+        footer{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+       <form method="post" name="google-sheet">
+    <h1>Contact Form</h1>
+    <hr>
+    <p>
+    
+    Name*
+    <input type="text" name="name" id="name" placeholder="pradeep chandrakar" required>
+    </p>
+    <p>
+        Email*
+        <input type="email" name="email" id="email"placeholder="pradeep123@gmail.com" required>
+    </p>
+    <p>
+        Phone*
+        <input type="text" name="phone" id="phone" placeholder="6789534075">
+    </p>
+    <p>
+        Subject
+        <select name="subject" id="subject"required>
+            <option value="">>-------select subject-----<</option>
+        <option value="maths">maths</option>
+        <option value="pysics">physics</option>
+        <option value="cheymistry">cheymistry</option>
+    </select>
+    </p>
+    <p>
+        Message: <textarea name="Message" id="Message" cols="30" rows="10"></textarea>
+    
+    </p>
+    <footer>
+    <input type="submit" value="save">
+    <input type="button" value="Reset">
+    <input type="button" value="print ">
+    </footer>
+       </form>
+    </header>
+    <script>
+          const scriptURL = 'https://script.google.com/macros/s/AKfycbwtqEw6WP-Vx7-fGQQgmqq3NyLUiHHsVrxKRKN_7OoHYEI6XalmT5z38PX9itXR0_w/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+    </script>
+</body>
+</html>
